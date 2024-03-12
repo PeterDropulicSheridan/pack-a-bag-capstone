@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-
+springsecurity5">
+<head>
+<base href="/">
+<link rel="stylesheet" type="text/css" href="../styles/login.css">
+<title>Register Form</title>
+</head>
+<body>
+	<nav class="navbar">
+		<a href="index"><img src="../images/packabag.png" alt="Logo"
+			class="logoHome"></a>
+	</nav>
+	<h1>Register User</h1>
+	<main>
+		<form action="#" th:action="@{/register}" method="post">
+			<label for="username">Username</label>: 
+			<input type="email" name="username" required> <br> <br> 
+			<label for="username">Password</label>:
+			<input type="password" name="password" required> <br> <br> 
+			
+			<div class="center"><input type="submit" value="Register"></div>
+		</form>
+	</main>
+</body>
+</html>

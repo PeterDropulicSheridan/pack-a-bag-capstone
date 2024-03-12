@@ -1,0 +1,88 @@
+body {
+	height: 100vh; 
+	background-color: #f2f2f2;
+	margin: 0;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #083464;
+    z-index: 1000;
+    display: flex;
+    justify-content: left; 
+    align-items: center;
+    height: 100px;}
+
+.navbar a {
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    margin: 0 10px; 
+}
+img.logoHome{
+	margin: center;
+	height: 50px;
+	width: auto;
+}
+main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+div.center{
+	text-align: center;
+}
+h1 {
+	margin-top: 200px;
+	
+	text-align: center;
+	margin-bottom: 20px; 
+}
+
+form {
+	width: 300px; 
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	text-align: left; 
+}
+
+legend {
+	border: 1px solid #ddd;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+input[type="type"], input[type="password"], input[type="submit"], input[type="email"] {
+	width: calc(100% - 22px);
+	
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+input[type="submit"] {
+	background-color: #083464;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: #065093;
+}
+
+.alert {
+    background-color: #f44336;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
