@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-
+springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Class 11-2 Example</title>
+</head>
+<body>
+<p> Welcome to the ADMIN DASHBOARD </p>
+<div th:fragment="logout" class="logout" sec:authorize= "isAuthenticated()">
+<div>
+<form action="#" th:action="@{/logout}" method="post">
+<input type="submit" value="Logout" /> </form></div> </div>
+<p><a href="/index" th:href="@{/index}">Home</a></p>
+</body>
+</html>
