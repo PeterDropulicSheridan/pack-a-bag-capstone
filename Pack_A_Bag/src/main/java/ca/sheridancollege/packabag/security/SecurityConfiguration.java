@@ -45,7 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
             .ignoring()
-            .antMatchers("/styles/**", "/scripts/**", "/images/**"); // Assuming you have scripts and images folders that also need to be accessible
+            .antMatchers("/styles/**", "/scripts/**", "/images/**"); 
     }
 
 
