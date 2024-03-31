@@ -1,0 +1,178 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: white;
+	color: black;
+	margin: 0;
+	padding: 0;
+}
+
+.navbar {
+	background-color: white;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navbar .logo {
+	display: flex;
+	align-items: center;
+}
+
+.navbar .logo img {
+	width: auto; 
+	height: 40px;
+}
+
+.navbar .logo .home {
+	margin-left: 20px;
+	color: black; 
+	text-decoration: none; 
+}
+
+.navbar .user-info {
+	display: flex;
+	align-items: center;
+}
+
+.navbar .user-info h2 {
+	margin: 0 10px;
+	color: white; 
+}
+
+.logout {
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.logout a {
+	background-image: url("/images/logout.png");
+	background-size: cover;
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-indent: -9999px; 
+}
+
+.logout:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.module {
+	background-color: white; 
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	box-shadow: white;
+	margin-bottom: 20px;
+	color: black; 
+}
+
+.module-header {
+	background-color: #4CAF50;
+	border-bottom: 1px solid #ddd;
+	color: white;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	padding: 1px;
+	text-align: center;
+	font-size: 20px;
+}
+
+.module-title {
+	margin: 0;
+	font-size: 25px;
+	color: black; 
+}
+
+.module-content {
+	background-color: white; 
+	padding: 20px;
+	overflow: hidden; 
+	font-size: 19px;
+}
+
+.settings-button {
+	display: inline-block;
+	padding: 8px 16px;
+	background-color: #4CAF50;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 5px;
+}
+
+.settings-button:hover {
+	background-color: #4CAF50; 
+}
+
+p {
+	color: black; 
+}
+
+.logo {
+	height: 40px;
+	margin-right: 20px;
+}
+
+.module-content.side-by-side {
+	padding-left: 100px;
+	display: flex;
+	gap: 75px;
+}
+
+.module-content.side-by-side .module {
+	width: 21%;
+}
+
+.volunteer-count-bottom-right {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+	.navbar {
+		flex-direction: column; 
+		align-items: center; 
+	}
+	.navbar .logo {
+		margin-bottom: 10px; 
+	}
+	.user-info {
+		margin-top: 10px; 
+	}
+	.logout {
+		width: 30px; 
+		height: 30px; 
+	}
+	.module-content.side-by-side {
+		padding-left: 0; 
+		flex-direction: column; 
+		gap: 20px; 
+	}
+	.module-content.side-by-side .module {
+		width: 100%; 
+	}
+
+	.module-content.side-by-side .module .rounded-button {
+		padding: 15px 30px; 
+		font-size: 20px; 
+	}
+	.volunteer-count-bottom-right {
+		position: static; 
+		margin-top: 20px; 
+	}
+
+	.module-content.side-by-side .module .module-content {
+		font-size: 22px; 
+		padding: 30px; 
+	}
+	.module-content.side-by-side .module .module-content .module-title {
+		font-size: 28px; 
+	}
+	.module-content.side-by-side .module .module-content p {
+		font-size: 22px; 
+	}
+}
