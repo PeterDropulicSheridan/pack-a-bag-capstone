@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Register</title>
+
+    <link rel="icon" type="image/png" href="/images/icon.png" sizes="32x32">
+    <link rel="stylesheet" type="text/css" href="css/EventRegister.css">
+    
+</head>
+
+<body>
+    <a href="/home" class="back-button">
+        <img src="/images/backbutton.png" alt="Back to Home" width="100%" height="100%">
+    </a>
+    <div class="register-info">
+        <h3>Events Form</h3>
+        <form th:action="@{/event-register}" method="post" th:object="${event}" onsubmit="return validateDate()">
+            <!-- New fields for date, time, title, description, and location -->
+            <div class="input-group">
+                <input type="date" id="date" name="date" placeholder="Date" class="input-field" th:field="*{date}" required>
+                <input type="time" id="time" name="time" placeholder="Time" class="input-field" th:field="*{time}" required>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="title" name="title" placeholder="Title" class="input-field" th:field="*{title}" required>
+            </div>
+
+            <div class="input-group">
+                <textarea id="description" name="description" placeholder="Description" class="input-field" th:field="*{description}" required></textarea>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="location" name="location" placeholder="Location" class="input-field" th:field="*{location}" required>
+            </div>
+
+            <br>
+            <input type="submit" value="Register" class="submit-button" onclick="return confirm('Press Ok to submit new Events! Thank you!')">
+        </form>
+        <div id="error-message" style="color: red; display: none;"></div>
+    </div>
+
+    <script>
+        function validateDate() {
+            const dateInput = document.getElementById("date");
+            const selectedDate = new Date(dateInput.value);
+            const currentDate = new Date();
+            currentDate.setHours(0, 0, 0, 0); 
+            
+            const errorMessage = document.getElementById("error-message");
+
+            
+            if (selectedDate < currentDate) {
+                errorMessage.textContent = "The selected date cannot be in the past. Please choose a valid date.";
+                errorMessage.style.display = "block"; 
+                return false; 
+            } else {
+                errorMessage.style.display = "none"; 
+                return true; 
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,361 @@
+@charset "UTF-8";
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-image: url('/images/ebg2.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 3;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+.error mark {
+    background-color: red;
+    color: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+    visibility: hidden; 
+      
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.contact-info {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 60px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.contact-info h2 {
+    color: #2c3e50;
+    font-size: 2em;
+    margin-bottom: 15px;
+    font-weight: 700;
+
+}
+
+.contact-info p {
+    font-size: 1.1em;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.contact-info a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-menu li {
+    margin-left: 1.5rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #4CAF50;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    padding-top: 1rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.sidebar.show {
+    display: flex;
+    transform: translateX(0);
+}
+
+.sidebar li {
+    width: 100%;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+    padding: 15px 20px;
+    font-weight: 600;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.sidebar a:hover {
+    color: #4CAF50;
+}
+
+.navbar-toggle {
+    display: none;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 5px;
+    list-style: none;
+    padding: 0;
+}
+
+.dropdown-content li {
+    padding: 0;
+}
+
+.dropdown-content li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 16px;
+    display: block;
+}
+
+.dropdown-content li a:hover {
+    background-color: #f1f1f1;
+}
+
+@media screen and (max-width: 800px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding-top: 2rem;
+    }
+
+    .dropdown-content {
+        position: static;
+        display: none;
+    }
+
+    .dropdown-content.show {
+        display: block;
+    }
+
+ 
+}
+
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: 100vh;
+        padding-top: 2rem;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .dropdown-content {
+        position: static;
+        display: none;
+    }
+
+    .dropdown-content.show {
+        display: block;
+    }
+
+
+}
+/* Contact Form Styles */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.contact-form {
+    background-color: #ffffff;
+    padding: 60px; /* Increased padding */
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px; /* Slightly increased max width */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.contact-form h1 {
+    font-size: 36px; /* Slightly larger font size */
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ADD8E6; /* Light blue */
+}
+
+.contact-form p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 15px; /* Increased font size */
+    font-weight: bold;
+}
+
+.contact-form label {
+    display: block;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 8px;
+    font-size: 20px; /* Increased font size */
+    color: #333;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 18px; /* Increased padding */
+    margin-bottom: 25px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 10px; /* Increased font size */
+    resize: vertical;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: #999;
+    outline: none;
+}
+
+.contact-form .name-fields {
+    display: flex;
+    gap: 15px; /* Slightly increased gap */
+}
+
+.contact-form .name-fields input[type="text"] {
+    flex: 1;
+}
+
+.contact-form button {
+    background-color: #6a5acd;
+    color: #ffffff;
+    padding: 18px 30px; /* Increased padding */
+    border: none;
+    border-radius: 20px;
+    font-size: 24px; /* Increased font size */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #5b4cba;
+}
+
+/* Error Message Styles */
+.error {
+    color: red;
+    font-size: 20px; /* Increased font size */
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .causes {
+        flex-direction: column;
+    }
+
+    .impact-cause {
+        width: 100%; /* Full width for each cause on mobile */
+        margin-bottom: 15px; /* Adjust spacing for mobile */
+    }
+
+    .section-title {
+        font-size: 24px; /* Smaller title size for mobile */
+    }
+
+    .section-subtitle {
+        font-size: 16px; /* Smaller subtitle size for mobile */
+    }
+
+    .cause-title {
+        font-size: 16px; /* Smaller cause title for mobile */
+    }
+
+    .cause-description {
+        font-size: 12px; /* Smaller description for mobile */
+    }
+
+    .cause-info {
+        font-size: 12px; /* Smaller info font size for mobile */
+    }
+}
+
+

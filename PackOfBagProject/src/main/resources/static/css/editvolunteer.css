@@ -1,0 +1,111 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-image: url('/images/bg1.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 0.8;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.text-container {
+    text-align: center;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.text-container h1 {
+    color: #1a73e8;
+    font-size: 70px;
+}
+
+.text-container h2 {
+    color: #2b2b2b;
+    font-size: 40px;
+}
+
+.text-container p {
+    color: black;
+    font-family: bold;
+}
+
+.input-group {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.input-group input {
+  flex: 1;
+}
+
+.register-info {
+  margin-left: 70px;
+  background-color: rgba(240, 240, 240, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+}
+.register-info h3 {
+	text-align: center;
+}
+.age-container {
+    display: flex;
+    align-items: center;
+}
+.age-container label {
+    margin-right: 7px; 
+    margin-bottom: 7px;
+}
+.input-field {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.back-button {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #333;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #f0f0f0;
+}
+.input-group select {
+    width: 120px;
+    margin-right: 10px;
+}
+
+.input-group input[type="tel"] {
+    flex: 1;
+}

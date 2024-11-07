@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/images/icon.png" sizes="32x32">
+    <link rel="stylesheet" type="text/css" href="css/register.css">
+    <script src="scripts/links.js"></script>
+    <title>Registration Form</title>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div th:if="${param.success}">
+            <div class="success-message">
+                <p>Registration Successful</p>
+            </div>
+        </div>
+        <form th:action="@{/register}" method="POST" role="form" th:object="${user}" class="registration-form">
+            <h2>Registration Form</h2>
+            <div class="form-group">
+                <label for="email"></label> <input th:field="*{email}" type="email" id="email" name="email"
+                    placeholder="Email.." required>
+            </div>
+            <div class="form-group">
+                <label for="fullname"></label> <input th:field="*{fullname}" type="text" id="fullname" name="fullname"
+                    placeholder="Full Name.." required>
+            </div>
+            <div class="form-group">
+                <label for="username"></label> <input th:field="*{username}" type="text" id="username" name="username"
+                    placeholder="Username.." required>
+            </div>
+            <div class="form-group">
+                <label for="password"></label>
+                <input th:field="*{password}" type="password" id="password" name="password" placeholder="Password.."
+                    onkeyup="checkPasswordStrength();" required>
+
+                <span><input type="checkbox" id="password-toggle" onchange="togglePasswordVisibility()">Show
+                    Password</span>
+                <span id="strength-badge"></span>
+            </div>
+
+
+            <div class="password-requirements">
+                <p>Password Requirements:</p>
+                <ul>
+                    <li>At least 8 characters long</li>
+                    <li>At least one special character [!@#$]</li>
+                    <li>At least one numeric character [1-9]</li>
+                </ul>
+            </div>
+
+            <div th:if="${userexist}" style="color: red;">Username is Taken </div>
+            <button type="submit" id="submit-button">Register</button>
+        </form> <br> <br>
+        <div> <a href="/home">Back to Dashboard</a></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('/images/ebg2.jpg'); 
+    background-size: cover; 
+    background-attachment: fixed;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    opacity: 0.9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1500px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.9); /* White background with transparency */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    animation: fadeIn 0.5s; /* Animation for container */
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    color: #2D4277; /* Darker shade for better contrast */
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+/* Back button */
+.back-button {
+    display: block;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.back-button img {
+    max-width: 70px;
+}
+
+/* Sort and Reset Button styles */
+.sort-reset-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sort-container {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+#sortByDropdown {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.sort-button, .reset-button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 15px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Transition effect */
+}
+.delete-button{
+	 background-color: red; /* Green background */
+    color: white; /* White text */
+    padding: 10px 15px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Transition effect */
+	
+}
+
+.edit-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.edit-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.sort-button:hover, .reset-button:hover, .delete-button:hover {
+    background-color: #45a049; /* Brighter green on hover */
+}
+
+.reset-button {
+    background-color: #f44336; /* Red color for reset button */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.reset-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Table styles */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer List</title>
+
+    <link rel="stylesheet" type="text/css" href="css/volunteerlist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <a href="/home" class="back-button"><img src="/images/backbutton.png" alt="Back to Home" width="100%"
+            height="100%"></a>
+    <div class="container">
+
+        <h1>Volunteer List</h1>
+        <div class="button-container">
+            <div>
+                <!-- Placeholder for manually adding volunteer -->
+                <a href="/volunteer-register">Manually Add Volunteer</a>
+            </div>
+            <div class="search-container">
+                <div>
+                    <select id="searchCategory">
+                        <option value="firstName">First Name</option>
+                        <option value="lastName">Last Name</option>
+                        <option value="age">Age</option>
+                        <option value="phoneNumber">Phone Number</option>
+                        <option value="email">Email</option>
+                        <option value="address">Address</option>
+                        <option value="city">City</option>
+                        <option value="province">Province</option>
+                        <option value="postalCode">Postal Code</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="text" id="searchInput" placeholder="Search...">
+                    <button onclick="searchTable()">Search</button>
+                    <button onclick="resetTable()">Reset</button> <!-- New Reset button -->
+                </div>
+            </div>
+        </div>
+        <div class="table-container">
+            <table id="volunteerTable" border="1" cellpadding="10">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Province</th>
+                        <th>Postal Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="v : ${vol}">
+                        <td th:text="${v.id}"></td>
+                        <td th:text="${v.firstName}"></td>
+                        <td th:text="${v.lastName}"></td>
+                        <td th:text="${v.age}"></td>
+                        <td th:text="${v.phoneNumber}"></td>
+                        <td th:text="${v.email}"></td>
+                        <td th:text="${v.address}"></td>
+                        <td th:text="${v.city}"></td>
+                        <td th:text="${v.province}"></td>
+                        <td th:text="${v.postalCode}"></td>
+                        <td class="button-container">
+                            <a th:href="@{/edit-volunteer/{id}(id=${v.id})}">Edit</a>
+                            <form action="/delete-volunteer" method="post">
+                                <input type="hidden" name="id" th:value="${v.id}" />
+                                <button type="submit"
+                                    onclick="return confirm('Are you sure you want to delete this volunteer?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('searchButton').addEventListener('click', searchTable);
+            document.getElementById('resetButton').addEventListener('click', resetTable);
+        });
+
+        function searchTable() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const table = document.getElementById('volunteerTable');
+            const tr = table.getElementsByTagName('tr');
+            const category = document.getElementById('searchCategory').value;
+
+            Array.from(tr).forEach(row => {
+                const td = row.getElementsByTagName('td')[getIndex(category)];
+                if (td) {
+                    const txtValue = td.textContent || td.innerText;
+                    row.style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? '' : 'none';
+                }
+            });
+        }
+
+        function resetTable() {
+            const table = document.getElementById('volunteerTable');
+            const tr = table.getElementsByTagName('tr');
+            Array.from(tr).forEach(row => row.style.display = '');
+        }
+
+        function getIndex(category) {
+            const indexMap = {
+                'firstName': 1,
+                'lastName': 2,
+                'age': 3,
+                'phoneNumber': 4,
+                'email': 5,
+                'address': 6,
+                'city': 7,
+                'province': 8,
+                'postalCode': 9
+            };
+            return indexMap[category] || 0;
+        }
+    </script>
+</body>
+
+</html>

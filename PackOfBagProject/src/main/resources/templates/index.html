@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pack A Bag</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="icon" type="image/png" href="/images/icon.png" sizes="32x32">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+	<header>
+		<nav class="navbar">
+			<div class="container">
+				<a href="/" class="logo"> <img src="/images/packabag.png"
+					alt="Pack-A-Bag Logo">
+				</a>
+				<button class="navbar-toggle" aria-label="Toggle navigation"
+					onclick="showSidebar()">
+					<img src="/images/menu_16dp_000000_FILL0_wght400_GRAD0_opsz20.png"
+						alt="Menu" height="28" width="28">
+				</button>
+
+				<!-- Sidebar -->
+				<ul class="sidebar">
+					<li onclick="hideSidebar()"><a href="#"> <img
+							src="images/close_16dp_000000_FILL0_wght400_GRAD0_opsz20.png"
+							alt="Exit" height="28" width="28">
+					</a></li>
+					<li class="dropdown"><a href="#about" class="dropbtn">About
+							Us</a>
+						<ul class="dropdown-content">
+							<li><a href="/history">History</a></li>
+							<li><a href="/whoWeAre">Who We Are</a></li>
+							<li><a
+								href="https://static1.squarespace.com/static/5a6ca9a712abd97a05752180/t/5a8b175941920223d0d36ff9/1519861424787/Pack+a+Bag+for+a+Friend+-+Milton+Chamption+-+Dec+2014.pdf"
+								target="_blank">Read about us</a></li>
+							<li><a href="/thanksto">Thanks To</a></li>
+						</ul></li>
+					<li><a href="/donations">Donate</a></li>
+					<li><a href="/eventView">Events</a></li>
+					<li><a href="/photoGallery">Photo Gallery</a></li>
+					<li><a href="/contact">Contact</a></li>
+					<li sec:authorize="isAuthenticated()"><a href="/home">Dashboard</a></li>
+					<li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+					<li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
+				</ul>
+
+				<!-- Regular Nav Bar -->
+				<ul class="nav-menu">
+					<li class="hideOnMobile dropdown"><a href="#about"
+						class="dropbtn">About Us</a>
+						<ul class="dropdown-content">
+							<li><a href="/history">History</a></li>
+							<li><a href="/whoWeAre">Who We Are</a></li>
+							<li><a
+								href="https://static1.squarespace.com/static/5a6ca9a712abd97a05752180/t/5a8b175941920223d0d36ff9/1519861424787/Pack+a+Bag+for+a+Friend+-+Milton+Chamption+-+Dec+2014.pdf"
+								target="_blank">Read about us</a></li>
+							<li><a href="/thanksto">Thanks To</a></li>
+						</ul></li>
+					<li class="hideOnMobile"><a href="/donations">Donate</a></li>
+					<li class="hideOnMobile"><a href="/eventView">Events</a></li>
+					<li class="hideOnMobile"><a href="/photoGallery">Photo Gallery</a></li>
+					<li class="hideOnMobile"><a href="/contact">Contact</a></li>
+					<li class="hideOnMobile" sec:authorize="isAuthenticated()"><a
+						href="/home">Dashboard</a></li>
+					<li class="hideOnMobile" sec:authorize="isAuthenticated()"><a
+						href="/logout">Logout</a></li>
+					<li class="hideOnMobile" sec:authorize="!isAuthenticated()"><a
+						href="/login">Login</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="container">
+				<h1>Pack-A-Bag Foundation</h1>
+				<p>Empowering communities through essential support</p>
+				<div class="cta-buttons">
+					<a href="https://www.canadahelps.org/en/dn/75219" target="_blank"
+						class="btn btn-primary">Donate Now</a> <a
+						href="/volunteer-register" class="btn btn-secondary">Become a Volunteer</a>
+				</div>
+
+
+			</div>
+		</section>
+
+
+		<!-- Mission and Vision Section -->
+		<section class="mission-vision">
+			<div class="container">
+				<div class="profile-container">
+					<div class="profile-item">
+						<div class="profile-image">
+							<img src="/images/mission.png" alt="Mission">
+						</div>
+						<h3 class="profile-header">MISSION</h3>
+						<p class="profile-text">Pack A Bag For A Friend foundation is
+							a non for profit charity that helps infants, children, youth at
+							christmas by providing a high quality backpack of essentials
+							(hats, gloves, socks, pajama's, book, toy, toothbrush). for the
+							family, a complete festive food hamper is provided that includes:
+							turkey, stuffing, gravy, potatoes, carrots, broccoli, celery,
+							salad, crackers, milk, oranges, apples cookies and chocolate
+							treat.</p>
+					</div>
+					<div class="profile-item">
+						<div class="profile-image">
+							<img src="/images/vission.png" alt="Image 1">
+						</div>
+						<h3 class="profile-header">VISION</h3>
+						<p class="profile-text">Our mission is to ensure that as many children 
+						and families in the Halton region as possible do not go without the basic 
+						clothing necessities and food during the Christmas season. We believe that 
+						every child deserves to experience the joy of the holidays, and we aim to 
+						provide essential items that foster warmth, comfort, and a sense of belonging.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="circle-stats">
+		<!--  	<div class="container">
+				<h2 class="impact-header">Our Impact</h2>
+				
+				<div class="circles-container">
+					
+					<div class="circle-container">
+						<svg class="circle-progress" width="300" height="300"
+							viewBox="0 0 300 300">
+                            <circle class="circle-bg" cx="150" cy="150"
+								r="130" />
+                            <circle class="circle-fill" cx="150"
+								cy="150" r="130" />
+                        </svg>
+						<div class="circle-text">
+							<h2>2,250</h2>
+							<p>backpacks distributed in 2022</p>
+						</div>
+					</div>
+				
+					<div class="circle-container">
+						<svg class="circle-progress" width="300" height="300"
+							viewBox="0 0 300 300">
+                            <circle class="circle-bg" cx="150" cy="150"
+								r="130" />
+                            <circle class="circle-fill" cx="150"
+								cy="150" r="130" />
+                        </svg>
+						<div class="circle-text">
+							<h2>500</h2>
+							<p>food baskets distributed in 2022</p>
+						</div>
+					</div>
+					
+					<div class="circle-container">
+						<svg class="circle-progress" width="300" height="300"
+							viewBox="0 0 300 300">
+                            <circle class="circle-bg" cx="150" cy="150"
+								r="130" />
+                            <circle class="circle-fill" cx="150"
+								cy="150" r="130" />
+                        </svg>
+						<div class="circle-text">
+							<h2>2,500+</h2>
+							<p>Backpacks WERE Distributed in 2023</p>
+						</div>
+					</div>
+					
+					<div class="circle-container">
+						<svg class="circle-progress" width="300" height="300"
+							viewBox="0 0 300 300">
+                            <circle class="circle-bg" cx="150" cy="150"
+								r="130" />
+                            <circle class="circle-fill" cx="150"
+								cy="150" r="130" />
+                        </svg>
+						<div class="circle-text">
+							<h2>600+</h2>
+							<p>Festive food hampers DISTRIBUTED in 2023</p>
+						</div>
+					</div>
+					
+					<div class="circle-container">
+						<svg class="circle-progress" width="300" height="300"
+							viewBox="0 0 300 300">
+                            <circle class="circle-bg" cx="150" cy="150"
+								r="130" />
+                            <circle class="circle-fill" cx="150"
+								cy="150" r="130" />
+                        </svg>
+						<div class="circle-text">
+							<h2>2,700+</h2>
+							<p> Our Goal in 2024: backpacks To be distributed</p>
+						</div>
+					</div>
+					
+				</div>
+			</div> -->
+			
+			 <div class="impact-container">
+        <h2 class="section-title">Recent <span>Cause</span></h2>
+        <p class="section-subtitle"> The Impact of Pack A Bag in Our Community</p>
+        <div class="causes">
+            <div class="impact-cause">
+                <img src="/images/bag1.png" alt="Stop Syria's Hunger">
+                <div class="cause-content">
+                    <h3 class="cause-title">Bag Giveaway</h3>
+                    <p class="cause-description">Since 2023 Backpacks WERE Distributed</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 20%;"></div>
+                    </div>
+                    <div class="cause-info">
+                        <span class="raised">Distributed: 2,500</span>
+                        <span class="goal">Goal: 10,000</span>
+                    </div>
+                </div>
+            </div>
+            <div class="impact-cause">
+                <img src="/images/Photo.png" alt="Children Need Family">
+                <div class="cause-content">
+                    <h3 class="cause-title">Festive Food Hampers</h3>
+                    <p class="cause-description">Since 2023 Festive food hampers DISTRIBUTED</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 12%;"></div>
+                    </div>
+                    <div class="cause-info">
+                        <span class="raised">Distributed: 600</span>
+                        <span class="goal">Goal: 20,000</span>
+                    </div>
+                </div>
+            </div>
+            <div class="impact-cause">
+                <img src="/images/image2.png" alt="Safe Residence of Orphans">
+                <div class="cause-content">
+                    <h3 class="cause-title">Generous Volunteers</h3>
+                    <p class="cause-description">We need more volunteers to assist us with our charity initiatives.</p>
+                    <div class="progress-bar">
+                        <div class="progress" th:style="'width: ' + ${progressPercentage} + '%'"></div>
+                    </div>
+                    <div class="cause-info">
+                        <span class="raised">Volunteers: <span th:text="${volunteerCount}"></span></span>
+                        <span class="goal">Goal: 100</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+		</section>
+		<!-- Services Section -->
+		<section class="services">
+			<div class="container">
+				<h2>What We Offer</h2>
+				<div class="service-grid">
+					<div class="service-item">
+						<i class="fas fa-box-open"></i>
+						<h3>Essential Items</h3>
+						<p>We provide backpacks filled with clothing, hygiene
+							products, and educational materials.</p>
+					</div>
+					<div class="service-item">
+						<i class="fas fa-hands-helping"></i>
+						<h3>Community Support</h3>
+						<p>Our organization is supported by volunteers and generous
+							donors who help us make a positive impact.</p>
+					</div>
+					<div class="service-item">
+						<i class="fas fa-heart"></i>
+						<h3>Empowering Lives</h3>
+						<p>We aim to empower individuals and families to overcome
+							challenges and achieve their goals.</p>
+					</div>
+				</div>
+			</div>
+			
+			
+		</section>
+
+		<!-- Pack a Bag Section -->
+		<section class="pack-a-bag">
+			<div class="container">
+				<h2>What You Find in a “Pack a Bag for a Friend” BackPack</h2>
+				<p>Each backpack contains one each of the following, age and
+					gender appropriate high-quality items:</p>
+				<ul class="pack-items">
+					<li>Pajamas</li>
+					<li>Socks</li>
+					<li>Gloves or Mitts</li>
+					<li>Hat/Toque</li>
+					<li>Age appropriate toy/Gift Card (when possible)</li>
+					<li>Various book types: reading, activity, cookbooks, etc.</li>
+				</ul>
+				<br>
+				<p><strong><a href="/donations">Click here for more donate info</a></strong></p>
+			
+			</div>
+		</section>
+
+
+
+
+		<!-- Contact Section -->
+		<section id="contact" class="contact">
+			<div class="container">
+				<h2>Contact Us</h2>
+				<div class="contact-info">
+					<div class="contact-item">
+						<i class="fas fa-phone"></i>
+						<p>
+							<a href="tel:6472398711">(647)239-8711</a>
+						</p>
+					</div>
+					<div class="contact-item">
+						<i class="fas fa-envelope"></i>
+						<p>
+							<a href="mailto:packabag@bell.net">packabag@bell.net</a>
+						</p>
+					</div>
+					<div class="contact-item">
+						<i class="fab fa-facebook"></i>
+						<p>
+							<a href="https://www.facebook.com/PackABagFoundation"
+								target="_blank">Pack A Bag Facebook Page</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>&copy; 2024 Pack-A-Bag Foundation. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<script>
+        window.onload = function () {
+            var dropdownButtons = document.querySelectorAll('.dropbtn');
+            var dropdownMenus = document.querySelectorAll('.dropdown-content');
+            var sidebar = document.querySelector('.sidebar');
+
+            function resetDropdowns() {
+                dropdownMenus.forEach(menu => menu.classList.remove('show'));
+            }
+
+            function resetSidebar() {
+                sidebar.classList.remove('show');
+            }
+
+            function handleDropdowns() {
+                if (window.innerWidth <= 768) {
+                    
+                    dropdownButtons.forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const nextMenu = btn.nextElementSibling;
+                            if (nextMenu.classList.contains('show')) {
+                                nextMenu.classList.remove('show');
+                            } else {
+                                resetDropdowns(); 
+                                nextMenu.classList.add('show');
+                            }
+                        });
+                    });
+                } else {
+                    
+                    resetDropdowns(); 
+                    dropdownButtons.forEach(btn => {
+                        const dropdown = btn.closest('.dropdown');
+                        const nextMenu = btn.nextElementSibling;
+
+                        dropdown.addEventListener('mouseenter', () => {
+                            nextMenu.style.display = 'block';
+                        });
+
+                        dropdown.addEventListener('mouseleave', () => {
+                            nextMenu.style.display = 'none';
+                        });
+                    });
+                }
+            }
+
+            function handleResize() {
+                handleDropdowns();
+                if (window.innerWidth > 768) {
+                    resetSidebar();
+                }
+            }
+
+            window.addEventListener('resize', handleResize);
+            handleDropdowns();
+        };
+
+        function showSidebar() {
+            document.querySelector('.sidebar').classList.add('show');
+        }
+
+        function hideSidebar() {
+            document.querySelector('.sidebar').classList.remove('show');
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const circleProgresses = document.querySelectorAll('.circle-fill');
+            const circleObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.strokeDashoffset = '0';
+                        circleObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            circleProgresses.forEach(circle => {
+                circleObserver.observe(circle);
+            });
+        });
+
+
+
+
+    </script>
+</html>

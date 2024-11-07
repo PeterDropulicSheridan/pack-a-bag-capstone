@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Event Edit</title>
+	<link rel="stylesheet" type="text/css" href="css/EventRegister.css">
+	<link rel="icon" type="image/png" href="/images/icon.png" sizes="32x32">
+
+</head>
+<body>
+<a href="/home" class="back-button"><img src="/images/backbutton.png" alt="Back to Home" width="100%"
+            height="100%"></a>
+<div class="register-info">
+    <h3>Events Edit Form</h3>
+    
+    
+    
+      <form th:action="@{'/edit-events/' + ${event.id}}" method="post" th:object="${event}">
+      
+      
+        
+        <!-- New fields for date, time, title, description, and location -->
+        <div class="input-group">
+            <input type="date" id="date" name="date" placeholder="Date" class="input-field" th:field="*{date}" required>
+            <input type="time" id="time" name="time" placeholder="Time" class="input-field" th:field="*{time}" required>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="title" name="title" placeholder="Title" class="input-field" th:field="*{title}" required>
+        </div>
+
+        <div class="input-group">
+            <textarea id="description" name="description" placeholder="Description" class="input-field" th:field="*{description}" required></textarea>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="location" name="location" placeholder="Location" class="input-field" th:field="*{location}" required>
+        </div>
+
+        <br>
+  
+    <input type="submit" value="Submit" class="submit-button" onclick="return confirm('Press Ok to submit edited events! Thankyou!')">
+
+    </form>
+</div>
+
+</body>
+
+
+<style>
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+	background-image: url('/images/ebg2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 10; 
+    
+}
+
+
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 80px;
+    height: auto;
+}
+/* Container Styles */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    padding: 20px; 
+}
+
+/* Text Container Styles */
+.text-container {
+    text-align: center;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 20px;
+    border-radius: 20px; 
+    margin-right: 100px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.text-container h1 {
+    color: #1a73e8;
+    font-size: 7rem; 
+}
+
+.text-container h2 {
+    color: #2b2b2b;
+    font-size: 2.5rem; 
+}
+
+h3{
+	color: #2b2b2b;
+    font-size: 2rem;
+}
+
+
+.text-container p {
+    color: black;
+    font-weight: bold; 
+}
+
+/* Input Group Styles */
+.input-group {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; 
+}
+
+/* Register Info Styles */
+.register-info {
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-top:150px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.register-info h3 {
+    text-align: center;
+}
+
+/* Age Container Styles */
+.age-container {
+    display: flex;
+    align-items: center;
+}
+
+.age-container label {
+    margin-right: 7px;
+}
+
+/* Input Field Styles */
+.input-field {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button Styles */
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; 
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.back-button {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #333;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-align: center; 
+    transition: background-color 0.3s; 
+}
+
+.back-button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Responsive Styles */
+.input-group select {
+    width: 120px;
+    margin-right: 10px;
+}
+
+.input-group input[type="tel"] {
+    flex: 1;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .text-container {
+        text-align: center;
+        margin-right: 0;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+
+    .text-container h1 {
+        font-size: 3rem; 
+    }
+
+    .text-container h2 {
+        font-size: 2rem; 
+    }
+
+    .register-info {
+        margin-left: 0; 
+    }
+
+    .input-group {
+        flex-direction: column; 
+    }
+
+    .input-group input,
+    .input-group select {
+        width: 100%; 
+    }
+
+    .input-field {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    .age-container label {
+        margin-right: 5px; 
+    }
+
+    .back-button {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}
+
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById("date").setAttribute("min", today);
+
+       
+        document.querySelector("form").addEventListener("submit", function(e) {
+            const dateField = document.getElementById("date").value;
+            
+           
+            if (!dateField) {
+                alert("Please enter a valid date.");
+                e.preventDefault(); 
+            }
+        });
+    });
+</script>
+
+</html>

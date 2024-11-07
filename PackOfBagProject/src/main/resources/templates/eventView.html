@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event View - Pack A Bag</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/eventview.css">
+    <link rel="icon" type="image/png" href="/images/icon.png" sizes="32x32">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+			<div class="container">
+				<a href="/" class="logo"> <img src="/images/packabag.png"
+					alt="Pack-A-Bag Logo">
+				</a>
+				<button class="navbar-toggle" aria-label="Toggle navigation"
+					onclick="showSidebar()">
+					<img src="/images/menu_16dp_000000_FILL0_wght400_GRAD0_opsz20.png"
+						alt="Menu" height="28" width="28">
+				</button>
+
+				<!-- Sidebar -->
+				<ul class="sidebar">
+					<li onclick="hideSidebar()"><a href="#"> <img
+							src="images/close_16dp_000000_FILL0_wght400_GRAD0_opsz20.png"
+							alt="Exit" height="28" width="28">
+					</a></li>
+					<li class="dropdown"><a href="#about" class="dropbtn">About
+							Us</a>
+						<ul class="dropdown-content">
+							<li><a href="/history">History</a></li>
+							<li><a href="/whoWeAre">Who We Are</a></li>
+							<li><a
+								href="https://static1.squarespace.com/static/5a6ca9a712abd97a05752180/t/5a8b175941920223d0d36ff9/1519861424787/Pack+a+Bag+for+a+Friend+-+Milton+Chamption+-+Dec+2014.pdf"
+								target="_blank">Read about us</a></li>
+							<li><a href="/thanksto">Thanks To</a></li>
+						</ul></li>
+					<li><a href="/donations">Donate</a></li>
+					<li><a href="/eventView">Events</a></li>
+					<li><a href="/photoGallery">Photo Gallery</a></li>
+					<li><a href="/contact">Contact</a></li>
+					<li sec:authorize="isAuthenticated()"><a href="/home">Dashboard</a></li>
+					<li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+					<li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
+				</ul>
+
+				<!-- Regular Nav Bar -->
+				<ul class="nav-menu">
+					<li class="hideOnMobile dropdown"><a href="#about"
+						class="dropbtn">About Us</a>
+						<ul class="dropdown-content">
+							<li><a href="/history">History</a></li>
+							<li><a href="/whoWeAre">Who We Are</a></li>
+							<li><a
+								href="https://static1.squarespace.com/static/5a6ca9a712abd97a05752180/t/5a8b175941920223d0d36ff9/1519861424787/Pack+a+Bag+for+a+Friend+-+Milton+Chamption+-+Dec+2014.pdf"
+								target="_blank">Read about us</a></li>
+							<li><a href="/thanksto">Thanks To</a></li>
+						</ul></li>
+					<li class="hideOnMobile"><a href="/donations">Donate</a></li>
+					<li class="hideOnMobile"><a href="/eventView">Events</a></li>
+					<li class="hideOnMobile"><a href="/photoGallery">Photo Gallery</a></li>
+					<li class="hideOnMobile"><a href="/contact">Contact</a></li>
+					<li class="hideOnMobile" sec:authorize="isAuthenticated()"><a
+						href="/home">Dashboard</a></li>
+					<li class="hideOnMobile" sec:authorize="isAuthenticated()"><a
+						href="/logout">Logout</a></li>
+					<li class="hideOnMobile" sec:authorize="!isAuthenticated()"><a
+						href="/login">Login</a></li>
+				</ul>
+			</div>
+		</nav>
+    </header>
+
+    <main class="event-view-main">
+        <div class="event-content">
+            <h1>UPCOMING EVENTS</h1>
+
+            <!-- Slideshow Gallery -->
+            <div class="event-gallery">
+                <div th:if="${#lists.isEmpty(eve)}" class="event-slide">
+                    <img src="/images/toys.jpg" alt="No Upcoming Events" class="event-image"> 
+                    <div class="event-info">
+                        <h2>No Upcoming Events</h2>
+                        <p>Stay tuned for future events!</p>
+                    </div>
+                </div>
+                <div th:each="event : ${eve}" class="event-slide">
+                    <img src="/images/toys.jpg" alt="Event Image" class="event-image">
+                    <div class="event-info">
+                        <h2 th:text="${event.title}">Event Title</h2>
+                       <strong> <p th:text="${event.description}">Event Description</p> </strong>
+                        <p>For additional information, please refer to the details provided below.</p>
+                        <a th:href="@{/userEventRegistration/{eventId}(eventId=${event.id})}" class="btn btn-primary">Register</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Calendar -->
+            <div class="event-calendar">
+                <h2>Event Calendar</h2>
+                <h3>Date format: yyyy-m-d</h3>
+                <div class="calendar-grid">
+                    <div th:each="event : ${eve}" class="calendar-event">
+                        <div class="event-date">
+                            <img src="/images/calendar.png" alt="Calendar" class="calendar-icon">
+                            <span th:text="${event.date}">Event Date</span>
+                            
+                        </div>
+
+                        <div class="event-title" th:text="${event.title}">Event Title</div>
+                        <div class="event-details">
+                            <p><strong>Time:</strong> <span th:text="${event.time}">Time: </span></p>
+                            <p><strong>Location:</strong> <span th:text="${event.location}">Location:</span></p>
+                            <a href="#" class="description-toggle"><strong>Click here for more details</strong></a>
+                            <p class="event-description" th:text="${event.description}" style="display: none;">Event Description</p>
+                        </div>
+                        <a th:href="@{/userEventRegistration/{eventId}(eventId=${event.id})}" class="btn btn-primary">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Pack-A-Bag Foundation. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
+    <script th:inline="javascript">
+        $(document).ready(function(){
+            $('.event-gallery').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                adaptiveHeight: true,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                prevArrow: '<button type="button" class="slick-prev">&lt;</button>',
+                nextArrow: '<button type="button" class="slick-next">&gt;</button>'
+            });
+
+            $('.description-toggle').click(function(e) {
+                e.preventDefault();
+                var $description = $(this).next('.event-description');
+                $description.slideToggle(300, function() {
+                    if ($description.is(':visible')) {
+                        $description.css('display', 'block'); 
+                    }
+                });
+            });
+        });
+        
+        window.onload = function() {
+            var dropdownButtons = document.querySelectorAll('.dropbtn');
+            var dropdownMenus = document.querySelectorAll('.dropdown-content');
+            var sidebar = document.querySelector('.sidebar');
+
+            function resetDropdowns() {
+                dropdownMenus.forEach(menu => menu.classList.remove('show'));
+            }
+
+            function resetSidebar() {
+                sidebar.classList.remove('show');
+            }
+
+            function handleDropdowns() {
+                if (window.innerWidth <= 768) {
+                    
+                    dropdownButtons.forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const nextMenu = btn.nextElementSibling;
+                            if (nextMenu.classList.contains('show')) {
+                                nextMenu.classList.remove('show');
+                            } else {
+                                resetDropdowns(); 
+                                nextMenu.classList.add('show');
+                            }
+                        });
+                    });
+                } else {
+                    
+                    resetDropdowns(); 
+                    dropdownButtons.forEach(btn => {
+                        const dropdown = btn.closest('.dropdown');
+                        const nextMenu = btn.nextElementSibling;
+                        
+                        dropdown.addEventListener('mouseenter', () => {
+                            nextMenu.style.display = 'block';
+                        });
+                        
+                        dropdown.addEventListener('mouseleave', () => {
+                            nextMenu.style.display = 'none';
+                        });
+                    });
+                }
+            }
+
+            function handleResize() {
+                handleDropdowns();
+                if (window.innerWidth > 768) {
+                    resetSidebar();
+                }
+            }
+
+            window.addEventListener('resize', handleResize);
+            handleDropdowns();
+        };
+
+        function showSidebar() {
+            document.querySelector('.sidebar').classList.add('show');
+        }
+
+        function hideSidebar() {
+            document.querySelector('.sidebar').classList.remove('show');
+        }
+        
+        
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        
+        document.querySelectorAll('.event-date-text').forEach(function (dateElement) {
+            const rawDate = dateElement.getAttribute('data-date');
+            
+            const formattedDate = formatDate(rawDate);
+            dateElement.textContent = formattedDate;
+        });
+    </script>
+</body>
+</html>

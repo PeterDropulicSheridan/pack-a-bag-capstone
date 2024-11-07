@@ -1,0 +1,192 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('/images/ebg2.jpg');
+    background-size: cover;
+    opacity: 0.9;
+}
+
+/* Container Styling */
+.container {
+    width: 80%;
+    max-width: 300px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+label {
+    font-weight: bold;
+    align-self: flex-start;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Button Styling */
+button {
+    background-image: linear-gradient(to right, #2596be, #2671eb, #4a4ae8, #7c2de8);
+    color: #fff;
+    border: none;
+    padding: 10px 80px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-image: linear-gradient(to right, #0079b3, #0054d6, #2b2bd4, #5509d4);
+}
+
+/* Error and Success Message Styling */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: left;
+}
+
+.logout-message,
+.success-message {
+    color: blue;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* Navbar Styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.logo {
+    height: 80px;
+    margin-right: 20px;
+}
+
+/* Dropdown Button Styling */
+.dropbtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+.dropbtn::before,
+.dropbtn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #466cb9;
+    top: 50%;
+    left: 0;
+}
+
+.dropbtn::after {
+    transform: rotate(90deg);
+}
+
+/* Password Input Styling */
+.password-input-container {
+    position: relative;
+}
+
+.password-input-container input[type="password"] {
+    width: calc(100% - 30px);
+    padding-right: 30px;
+    background-image: url('show-password-icon.png');
+    background-repeat: no-repeat;
+    background-position: right 5px center;
+    background-size: 20px;
+}
+
+.password-input-container input:focus {
+    outline: none;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    height: 100px;
+    width: 15px;
+}
+
+/* Password Requirements Styling */
+.password-requirements {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.password-requirements ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.password-requirements ul li {
+    margin-bottom: 5px;
+}
+
+/* Keyframe for Animation */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}

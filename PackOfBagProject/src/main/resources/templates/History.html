@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - Pack a bag</title>
+    <link rel="stylesheet" type="text/css" href="css/history.css">
+    <link rel="icon" type="image/png" href="/images/icon.png" sizes="32x32">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+		<nav class="navbar">
+			<div class="container">
+				<a href="/" class="logo"> <img src="/images/packabag.png"
+					alt="Pack-A-Bag Logo">
+				</a>
+				<button class="navbar-toggle" aria-label="Toggle navigation"
+					onclick="showSidebar()">
+					<img src="/images/menu_16dp_000000_FILL0_wght400_GRAD0_opsz20.png"
+						alt="Menu" height="28" width="28">
+				</button>
+
+				<!-- Sidebar -->
+				<ul class="sidebar">
+					<li onclick="hideSidebar()"><a href="#"> <img
+							src="images/close_16dp_000000_FILL0_wght400_GRAD0_opsz20.png"
+							alt="Exit" height="28" width="28">
+					</a></li>
+					<li class="dropdown"><a href="#about" class="dropbtn">About
+							Us</a>
+						<ul class="dropdown-content">
+							<li><a href="/history">History</a></li>
+							<li><a href="/whoWeAre">Who We Are</a></li>
+							<li><a
+								href="https://static1.squarespace.com/static/5a6ca9a712abd97a05752180/t/5a8b175941920223d0d36ff9/1519861424787/Pack+a+Bag+for+a+Friend+-+Milton+Chamption+-+Dec+2014.pdf"
+								target="_blank">Read about us</a></li>
+							<li><a href="/thanksto">Thanks To</a></li>
+						</ul></li>
+					<li><a href="/donations">Donate</a></li>
+					<li><a href="/eventView">Events</a></li>
+					<li><a href="/photoGallery">Photo Gallery</a></li>
+					<li><a href="/contact">Contact</a></li>
+					<li sec:authorize="isAuthenticated()"><a href="/home">Dashboard</a></li>
+					<li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+					<li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
+				</ul>
+
+				<!-- Regular Nav Bar -->
+				<ul class="nav-menu">
+					<li class="hideOnMobile dropdown"><a href="#about"
+						class="dropbtn">About Us</a>
+						<ul class="dropdown-content">
+							<li><a href="/history">History</a></li>
+							<li><a href="/whoWeAre">Who We Are</a></li>
+							<li><a
+								href="https://static1.squarespace.com/static/5a6ca9a712abd97a05752180/t/5a8b175941920223d0d36ff9/1519861424787/Pack+a+Bag+for+a+Friend+-+Milton+Chamption+-+Dec+2014.pdf"
+								target="_blank">Read about us</a></li>
+							<li><a href="/thanksto">Thanks To</a></li>
+						</ul></li>
+					<li class="hideOnMobile"><a href="/donations">Donate</a></li>
+					<li class="hideOnMobile"><a href="/eventView">Events</a></li>
+					<li class="hideOnMobile"><a href="/photoGallery">Photo Gallery</a></li>
+					<li class="hideOnMobile"><a href="/contact">Contact</a></li>
+					<li class="hideOnMobile" sec:authorize="isAuthenticated()"><a
+						href="/home">Dashboard</a></li>
+					<li class="hideOnMobile" sec:authorize="isAuthenticated()"><a
+						href="/logout">Logout</a></li>
+					<li class="hideOnMobile" sec:authorize="!isAuthenticated()"><a
+						href="/login">Login</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+    <main class="history-content">
+        <section class="history-section">
+            <h1>OUR HISTORY</h1>
+            <p>Our first food drive took place in 2005, where we went to the local grocery store, purchased food, and
+                arranged for the Milton Fire Department to come by the house to pick up the donated food.</p>
+            <p>In 2014, Pack a Bag for a Friend was created where the idea of donated food became a back pack of donated
+                items.</p>
+            <p>In the first year (2014) 540 back packs were donated to those in Milton. The next year in 2015, 825 back
+                packs were donated, followed with 1,250 in 2016, and 1,470 in 2017. In 2018, we expand our effort and
+                with the support of many in the community we donated approximately 1,950 backpacks to those living in
+                Milton, Acton, and Georgetown.</p>
+            <p>Our goal for 2019, is to donate 2,000 back packs to those in need.</p>
+        </section>
+
+        <section class="history-section">
+            <h2>HOW DID WE EVOLVE?</h2>
+            <p>Before creating the Foundation, we were involved in hosting food drives in December for over 10 years
+                with the children we were involved with through our daycare.</p>
+            <p>A large number of the children we met through our previous daycare are still involved creating labels,
+                sorting items, packing items, fund raising, and carrying out the back packs out to the cars.</p>
+            <p>Today, we have a very large group of individuals and organizations who donate to us, help us, and support
+                us.</p>
+        </section>
+
+        <div class="image-container">
+            <figure>
+                <img src="/images/community.png" alt="Community">
+                <figcaption class="legend">Our Community Support</figcaption>
+            </figure>
+            <figure>
+                <img src="/images/season of giving.png" alt="Season of Giving">
+                <figcaption class="legend">Season of Giving</figcaption>
+            </figure>
+        </div>
+    </main>
+
+    <script>
+        window.onload = function () {
+            var dropdownButtons = document.querySelectorAll('.dropbtn');
+            var dropdownMenus = document.querySelectorAll('.dropdown-content');
+            var sidebar = document.querySelector('.sidebar');
+
+            function resetDropdowns() {
+                dropdownMenus.forEach(menu => menu.classList.remove('show'));
+            }
+
+            function resetSidebar() {
+                sidebar.classList.remove('show');
+            }
+
+            function handleDropdowns() {
+                if (window.innerWidth <= 768) {
+                    dropdownButtons.forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const nextMenu = btn.nextElementSibling;
+                            if (nextMenu.classList.contains('show')) {
+                                nextMenu.classList.remove('show');
+                            } else {
+                                resetDropdowns();
+                                nextMenu.classList.add('show');
+                            }
+                        });
+                    });
+                } else {
+                    resetDropdowns();
+                    dropdownButtons.forEach(btn => {
+                        const dropdown = btn.closest('.dropdown');
+                        const nextMenu = btn.nextElementSibling;
+
+                        dropdown.addEventListener('mouseenter', () => {
+                            nextMenu.style.display = 'block';
+                        });
+
+                        dropdown.addEventListener('mouseleave', () => {
+                            nextMenu.style.display = 'none';
+                        });
+                    });
+                }
+            }
+
+            function handleResize() {
+                handleDropdowns();
+                if (window.innerWidth > 768) {
+                    resetSidebar();
+                }
+            }
+
+            window.addEventListener('resize', handleResize);
+            handleDropdowns();
+        };
+
+        function showSidebar() {
+            document.querySelector('.sidebar').classList.add('show');
+        }
+
+        function hideSidebar() {
+            document.querySelector('.sidebar').classList.remove('show');
+        }
+    </script>
+</body>
+
+</html>

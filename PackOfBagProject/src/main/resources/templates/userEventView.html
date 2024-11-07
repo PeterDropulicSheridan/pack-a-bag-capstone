@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Event List</title>
+    <link rel="stylesheet" type="text/css" href="css/volunteerlist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+    <a href="/home" class="back-button">
+        <img src="/images/backbutton.png" alt="Back to Home" width="100%" height="100%">
+    </a>
+
+    <div class="container">
+        <h1>User Event Registration List</h1>
+        
+        <button class="sort-button" onclick="sortTable()">Sort by Event Title</button>
+
+        <div class="table-container">
+            <table id="userEventTable"> 
+                <thead>
+                    <tr>
+                        <th>Event Title</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="userEvent : ${userEvents}">
+                        <td th:text="${userEvent.eventTitle}"></td>
+                        <td th:text="${userEvent.firstName + ' ' + userEvent.lastName}"></td>
+                        <td th:text="${userEvent.email}"></td>
+                        <td th:text="${userEvent.phoneNumber}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script>
+        function sortTable() {
+            const table = document.getElementById("userEventTable");
+            const tbody = table.getElementsByTagName("tbody")[0];
+            const rows = Array.from(tbody.getElementsByTagName("tr"));
+
+            if (rows.length === 0) {
+                return; 
+            }
+
+            
+            rows.sort((a, b) => {
+                const titleA = a.cells[0].innerText.toLowerCase();
+                const titleB = b.cells[0].innerText.toLowerCase();
+                return titleA.localeCompare(titleB);
+            });
+
+            
+            rows.forEach(row => tbody.appendChild(row));
+        }
+    </script>
+</body>
+</html>

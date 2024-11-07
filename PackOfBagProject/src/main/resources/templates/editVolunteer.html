@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Welcome to PACK-A-BAG</title>
+	<link rel="stylesheet" type="text/css" href="css/editvolunteer.css">
+	<link rel="icon" type="image/png" href="/images/icon.png" sizes="32x32">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-image: url('/images/bg1.jpg');
+			background-size: cover;
+			background-repeat: no-repeat;
+			opacity: 0.8;
+		}
+
+		.container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.text-container {
+			text-align: center;
+			color: #333;
+			background-color: rgba(255, 255, 255, 0.8);
+			padding: 20px;
+			border-radius: 10px;
+			margin-right: 20px;
+		}
+
+		.text-container h1 {
+			color: #1a73e8;
+			font-size: 70px;
+		}
+
+		.text-container h2 {
+			color: #2b2b2b;
+			font-size: 40px;
+		}
+
+		.text-container p {
+			color: black;
+			font-family: bold;
+		}
+
+		.input-group {
+			display: flex;
+			margin-bottom: 10px;
+		}
+
+		.input-group input {
+			flex: 1;
+		}
+
+		.register-info {
+			margin-left: 70px;
+			background-color: rgba(240, 240, 240, 0.9);
+			padding: 20px;
+			border-radius: 10px;
+		}
+
+		.register-info h3 {
+			text-align: center;
+		}
+
+		.age-container {
+			display: flex;
+			align-items: center;
+		}
+
+		.age-container label {
+			margin-right: 7px;
+			margin-bottom: 7px;
+		}
+
+		.input-field {
+			width: calc(100% - 22px);
+			padding: 10px;
+			margin-bottom: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+
+		.submit-button {
+			width: 100%;
+			padding: 10px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.submit-button:hover {
+			background-color: #45a049;
+		}
+
+		.back-button {
+			display: block;
+			margin-top: 20px;
+			text-decoration: none;
+			color: #333;
+			border: 1px solid #333;
+			padding: 10px 20px;
+			font-size: 14px;
+			border-radius: 5px;
+		}
+
+		.back-button:hover {
+			background-color: #f0f0f0;
+		}
+
+		.input-group select {
+			width: 120px;
+			margin-right: 10px;
+		}
+
+		.input-group input[type="tel"] {
+			flex: 1;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="text-container">
+			<h1>Edit Volunteer</h1>
+			<h2>PACK-A-BAG</h2>
+			<p>Your support means the world to us. We can't wait to welcome
+				you!</p>
+			<a href="/volunteerView" class="back-button"> <- Dashboard</a>
+
+		</div>
+		<div class="register-info">
+			<h3>Edit Volunteer Form</h3>
+			<form th:action="@{'/edit-volunteer/' + ${volunteer.id}}" method="post" th:object="${volunteer}">
+
+				<div class="input-group">
+					<input type="text" id="firstname" name="firstname" placeholder="First Name" class="input-field"
+						th:field="*{firstName}" required> <input type="text" id="lastname" name="lastname"
+						placeholder="Last Name" class="input-field" th:field="*{lastName}" required>
+					<div class="age-container">
+						<label for="age">Age:</label> <input type="number" id="age" name="age" placeholder="Age"
+							class="input-field" th:field="*{age}" min="5" required>
+					</div>
+				</div>
+
+
+				<div class="input-group">
+					<input type="tel" id="phone" name="phone" class="input-field" placeholder="Phone Number"
+						minlength="10" maxlength="15" th:field="*{phoneNumber}" required>
+				</div>
+
+				<div class="input-group">
+					<input type="email" id="email" name="email" placeholder="Email" class="input-field"
+						th:field="*{email}" required>
+				</div>
+
+				<div class="input-group">
+					<input type="text" id="address" name="address" placeholder="Address" class="input-field"
+						th:field="*{address}" required>
+				</div>
+				<div class="input-group">
+					<input type="text" id="city" name="city" placeholder="City" class="input-field" th:field="*{city}"
+						required> <input type="text" id="province" name="province" placeholder="Province"
+						class="input-field" th:field="*{province}" required> <input type="text" id="postal_code"
+						name="postal_code" placeholder="Postal Code" class="input-field" th:field="*{postalCode}"
+						pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]" required>
+				</div>
+
+				<br> <input type="submit" value="Submit" class="submit-button">
+			</form>
+		</div>
+
+		<script>
+			var countryCodeSelect = document.getElementById("countryCode");
+			var phoneNumberInput = document.getElementById("phone");
+
+			countryCodeSelect.addEventListener("keydown", function (event) {
+				event.preventDefault();
+			});
+
+			countryCodeSelect.addEventListener("change", function () {
+				phoneNumberInput.value = this.value + " ";
+			});
+
+			phoneNumberInput.addEventListener("input", function () {
+				if (!phoneNumberInput.value.startsWith(countryCodeSelect.value
+					+ " ")) {
+					phoneNumberInput.value = countryCodeSelect.value
+						+ " "
+						+ phoneNumberInput.value
+							.substring(countryCodeSelect.value.length);
+				}
+			});
+		</script>
+
+
+
+
+	</div>
+</body>
+
+</html>

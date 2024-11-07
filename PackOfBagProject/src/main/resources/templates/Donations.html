@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donations - Pack A Bag</title>
+
+    <link rel="stylesheet" type="text/css" href="css/donations.css">
+    <link rel="icon" type="image/png" href="/images/icon.png" sizes="32x32">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+		<nav class="navbar">
+			<div class="container">
+				<a href="/" class="logo"> <img src="/images/packabag.png"
+					alt="Pack-A-Bag Logo">
+				</a>
+				<button class="navbar-toggle" aria-label="Toggle navigation"
+					onclick="showSidebar()">
+					<img src="/images/menu_16dp_000000_FILL0_wght400_GRAD0_opsz20.png"
+						alt="Menu" height="28" width="28">
+				</button>
+
+				<!-- Sidebar -->
+				<ul class="sidebar">
+					<li onclick="hideSidebar()"><a href="#"> <img
+							src="images/close_16dp_000000_FILL0_wght400_GRAD0_opsz20.png"
+							alt="Exit" height="28" width="28">
+					</a></li>
+					<li class="dropdown"><a href="#about" class="dropbtn">About
+							Us</a>
+						<ul class="dropdown-content">
+							<li><a href="/history">History</a></li>
+							<li><a href="/whoWeAre">Who We Are</a></li>
+							<li><a
+								href="https://static1.squarespace.com/static/5a6ca9a712abd97a05752180/t/5a8b175941920223d0d36ff9/1519861424787/Pack+a+Bag+for+a+Friend+-+Milton+Chamption+-+Dec+2014.pdf"
+								target="_blank">Read about us</a></li>
+							<li><a href="/thanksto">Thanks To</a></li>
+						</ul></li>
+					<li><a href="/donations">Donate</a></li>
+					<li><a href="/eventView">Events</a></li>
+					<li><a href="/photoGallery">Photo Gallery</a></li>
+					<li><a href="/contact">Contact</a></li>
+					<li sec:authorize="isAuthenticated()"><a href="/home">Dashboard</a></li>
+					<li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+					<li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
+				</ul>
+
+				<!-- Regular Nav Bar -->
+				<ul class="nav-menu">
+					<li class="hideOnMobile dropdown"><a href="#about"
+						class="dropbtn">About Us</a>
+						<ul class="dropdown-content">
+							<li><a href="/history">History</a></li>
+							<li><a href="/whoWeAre">Who We Are</a></li>
+							<li><a
+								href="https://static1.squarespace.com/static/5a6ca9a712abd97a05752180/t/5a8b175941920223d0d36ff9/1519861424787/Pack+a+Bag+for+a+Friend+-+Milton+Chamption+-+Dec+2014.pdf"
+								target="_blank">Read about us</a></li>
+							<li><a href="/thanksto">Thanks To</a></li>
+						</ul></li>
+					<li class="hideOnMobile"><a href="/donations">Donate</a></li>
+					<li class="hideOnMobile"><a href="/eventView">Events</a></li>
+					<li class="hideOnMobile"><a href="/photoGallery">Photo Gallery</a></li>
+					<li class="hideOnMobile"><a href="/contact">Contact</a></li>
+					<li class="hideOnMobile" sec:authorize="isAuthenticated()"><a
+						href="/home">Dashboard</a></li>
+					<li class="hideOnMobile" sec:authorize="isAuthenticated()"><a
+						href="/logout">Logout</a></li>
+					<li class="hideOnMobile" sec:authorize="!isAuthenticated()"><a
+						href="/login">Login</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+    <main>
+        <div class="container">
+            <h1>DONATIONS WELCOMED</h1>
+
+            <div class="photo">
+
+                <div class="image-container">
+                    <h3>NEW PAJAMAS OR TOY</h3>
+                    <img src="images/pajama.jpg" alt="Support photo">
+                    <p class="image-description">Drop off new PJ's or TOY to Pack a Bag for a Friend
+                        at 40 King Street, Milton, ON L9T 1J5
+                    </p>
+                </div>
+
+                <div class="image-container">
+                    <h3>TURKEY</h3>
+                    <img src="images/turkey.jpg" alt="Support photo">
+                    <p class="image-description">Drop off turkey mid December to Pack A Bag, 40 King Street, Milton, ON
+                        L9T 1J5</p>
+                </div>
+
+                <div class="image-container">
+                    <h4>MONETARY CONTRIBUTION</h4>
+                    <img src="images/donate.jpg" alt="Support photo">
+                    <ul class="image-description">
+                        <li>Cheque or Cash mailed to Pack A Bag at 40 King St., Milton ON L9T 1J5</li>
+                        <li>
+                            <strong>Etransfer:</strong> packabag@bell.net
+                        </li>
+                        <li>
+                            Online Donations click the button below
+                        </li>
+                        <a href="https://www.canadahelps.org/en/dn/75219" target="_blank" class="donate-button">Donate
+                            Online</a>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p><a href="tel:6472398711">(647)239-8711</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p><a href="mailto:packabag@bell.net">packabag@bell.net</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-facebook"></i>
+                        <p><a href="https://www.facebook.com/PackABagFoundation" target="_blank">Pack A Bag Facebook
+                                Page</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        window.onload = function () {
+            var dropdownButtons = document.querySelectorAll('.dropbtn');
+            var dropdownMenus = document.querySelectorAll('.dropdown-content');
+            var sidebar = document.querySelector('.sidebar');
+
+            function resetDropdowns() {
+                dropdownMenus.forEach(menu => menu.classList.remove('show'));
+            }
+
+            function resetSidebar() {
+                sidebar.classList.remove('show');
+            }
+
+            function handleDropdowns() {
+                if (window.innerWidth <= 768) {
+                    dropdownButtons.forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const nextMenu = btn.nextElementSibling;
+                            if (nextMenu.classList.contains('show')) {
+                                nextMenu.classList.remove('show');
+                            } else {
+                                resetDropdowns();
+                                nextMenu.classList.add('show');
+                            }
+                        });
+                    });
+                } else {
+                    resetDropdowns();
+                    dropdownButtons.forEach(btn => {
+                        const dropdown = btn.closest('.dropdown');
+                        const nextMenu = btn.nextElementSibling;
+
+                        dropdown.addEventListener('mouseenter', () => {
+                            nextMenu.style.display = 'block';
+                        });
+
+                        dropdown.addEventListener('mouseleave', () => {
+                            nextMenu.style.display = 'none';
+                        });
+                    });
+                }
+            }
+
+            function handleResize() {
+                handleDropdowns();
+                if (window.innerWidth > 768) {
+                    resetSidebar();
+                }
+            }
+
+            window.addEventListener('resize', handleResize);
+            handleDropdowns();
+        };
+
+        function showSidebar() {
+            document.querySelector('.sidebar').classList.add('show');
+        }
+
+        function hideSidebar() {
+            document.querySelector('.sidebar').classList.remove('show');
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pack A Bag</title>
+    <link rel="stylesheet" type="text/css" href="css/whoweare.css">
+    <link rel="icon" type="image/png" href="/images/icon.png" sizes="32x32">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+		<nav class="navbar">
+			<div class="container">
+				<a href="/" class="logo"> <img src="/images/packabag.png"
+					alt="Pack-A-Bag Logo">
+				</a>
+				<button class="navbar-toggle" aria-label="Toggle navigation"
+					onclick="showSidebar()">
+					<img src="/images/menu_16dp_000000_FILL0_wght400_GRAD0_opsz20.png"
+						alt="Menu" height="28" width="28">
+				</button>
+
+				<!-- Sidebar -->
+				<ul class="sidebar">
+					<li onclick="hideSidebar()"><a href="#"> <img
+							src="images/close_16dp_000000_FILL0_wght400_GRAD0_opsz20.png"
+							alt="Exit" height="28" width="28">
+					</a></li>
+					<li class="dropdown"><a href="#about" class="dropbtn">About
+							Us</a>
+						<ul class="dropdown-content">
+							<li><a href="/history">History</a></li>
+							<li><a href="/whoWeAre">Who We Are</a></li>
+							<li><a
+								href="https://static1.squarespace.com/static/5a6ca9a712abd97a05752180/t/5a8b175941920223d0d36ff9/1519861424787/Pack+a+Bag+for+a+Friend+-+Milton+Chamption+-+Dec+2014.pdf"
+								target="_blank">Read about us</a></li>
+							<li><a href="/thanksto">Thanks To</a></li>
+						</ul></li>
+					<li><a href="/donations">Donate</a></li>
+					<li><a href="/eventView">Events</a></li>
+					<li><a href="/photoGallery">Photo Gallery</a></li>
+					<li><a href="/contact">Contact</a></li>
+					<li sec:authorize="isAuthenticated()"><a href="/home">Dashboard</a></li>
+					<li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+					<li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>
+				</ul>
+
+				<!-- Regular Nav Bar -->
+				<ul class="nav-menu">
+					<li class="hideOnMobile dropdown"><a href="#about"
+						class="dropbtn">About Us</a>
+						<ul class="dropdown-content">
+							<li><a href="/history">History</a></li>
+							<li><a href="/whoWeAre">Who We Are</a></li>
+							<li><a
+								href="https://static1.squarespace.com/static/5a6ca9a712abd97a05752180/t/5a8b175941920223d0d36ff9/1519861424787/Pack+a+Bag+for+a+Friend+-+Milton+Chamption+-+Dec+2014.pdf"
+								target="_blank">Read about us</a></li>
+							<li><a href="/thanksto">Thanks To</a></li>
+						</ul></li>
+					<li class="hideOnMobile"><a href="/donations">Donate</a></li>
+					<li class="hideOnMobile"><a href="/eventView">Events</a></li>
+					<li class="hideOnMobile"><a href="/photoGallery">Photo Gallery</a></li>
+					<li class="hideOnMobile"><a href="/contact">Contact</a></li>
+					<li class="hideOnMobile" sec:authorize="isAuthenticated()"><a
+						href="/home">Dashboard</a></li>
+					<li class="hideOnMobile" sec:authorize="isAuthenticated()"><a
+						href="/logout">Logout</a></li>
+					<li class="hideOnMobile" sec:authorize="!isAuthenticated()"><a
+						href="/login">Login</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+    <!-- WHO WE ARE Section -->
+    <section class="who-we-are">
+        <div class="container">
+            <h1>WHO WE ARE</h1>
+            <ul>
+                <li>We are a registered 781218326RR0001 non-profit charity located in the Halton Region & able to
+                    provide income tax receipts for all monetary donations.</li>
+                <li>We are a "well-seasoned board" of 6 members incorporating approximately 100 years of business and
+                    guest experience amongst us.</li>
+                <li>We are passionate about genuinely helping those in need.</li>
+                <li>Our charity welcomes approximately 40-50 volunteers of all ages.</li>
+                <li>We strive to continually evolve.</li>
+            </ul>
+            <img src="images/founder.jpg" alt="Who We Are Image" class="who-we-are-image">
+        </div>
+    </section>
+
+    <!-- WHO WE HELP Section -->
+    <section class="who-we-help">
+        <div class="container">
+            <h1>WHO WE HELP</h1>
+            <ul>
+                <li> In December 2022, approximately 2,250 back packs were distributed to the following organizations:
+                </li>
+                <li>Big Brothers and Big Sisters of Milton and Halton</li>
+                <li>St. Vincent de Paul</li>
+                <li>The families of Food4Kids Halton in Milton, Acton, Georgetown, Oakville, and Burlington</li>
+                <li>Milton Transitional House</li>
+                <li>Grace Anglican Church</li>
+                <li>Food for Life</li>
+                <li>Milton Community Living</li>
+                <li>Community Youth Program</li>
+                <li>Crossing Church</li>
+                <li>Living Hope for Care and Counseling</li>
+                <li>Shiafra Homes</li>
+                <li>Bob Rumball Canadian Centre of Excellence for the Deaf - Milton</li>
+                <li>Plus individuals in the community</li>
+            </ul>
+        </div>
+    </section>
+
+
+</body>
+<script>
+    window.onload = function () {
+        var dropdownButtons = document.querySelectorAll('.dropbtn');
+        var dropdownMenus = document.querySelectorAll('.dropdown-content');
+        var sidebar = document.querySelector('.sidebar');
+
+        function resetDropdowns() {
+            dropdownMenus.forEach(menu => menu.classList.remove('show'));
+        }
+
+        function resetSidebar() {
+            sidebar.classList.remove('show');
+        }
+
+        function handleDropdowns() {
+            if (window.innerWidth <= 768) {
+                dropdownButtons.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const nextMenu = btn.nextElementSibling;
+                        if (nextMenu.classList.contains('show')) {
+                            nextMenu.classList.remove('show');
+                        } else {
+                            resetDropdowns();
+                            nextMenu.classList.add('show');
+                        }
+                    });
+                });
+            } else {
+                resetDropdowns();
+                dropdownButtons.forEach(btn => {
+                    const dropdown = btn.closest('.dropdown');
+                    const nextMenu = btn.nextElementSibling;
+
+                    dropdown.addEventListener('mouseenter', () => {
+                        nextMenu.style.display = 'block';
+                    });
+
+                    dropdown.addEventListener('mouseleave', () => {
+                        nextMenu.style.display = 'none';
+                    });
+                });
+            }
+        }
+
+        function handleResize() {
+            handleDropdowns();
+            if (window.innerWidth > 768) {
+                resetSidebar();
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleDropdowns();
+    };
+
+    function showSidebar() {
+        document.querySelector('.sidebar').classList.add('show');
+    }
+
+    function hideSidebar() {
+        document.querySelector('.sidebar').classList.remove('show');
+    }
+
+</script>
+
+</html>

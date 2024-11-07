@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <script src="scripts/links.js"></script>
+    <link rel="icon" type="image/png" href="/images/icon.png" sizes="32x32">
+
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div th:if="${param.logout}" class="logout-message">
+            <p>Logout Success!</p>
+        </div>
+        <h2>Welcome</h2>
+        <div>
+            <img src="/images/icon.png" alt="B Icon" style="width: 50px; height: 50px;">
+        </div>
+        <form th:action="@{/login}" method="POST" role="form" th:object="${user}" class="registration-form">
+            <div class="form-group">
+                <label for="username"></label>
+                <input th:field="*{username}" type="text" id="username" name="username" placeholder="Username"
+                    th:disabled="${#authorization.expression('isAuthenticated()')}" required>
+            </div>
+            <div class="form-group password-group">
+                <label for="password"></label>
+                <input th:field="*{password}" type="password" id="password" name="password" placeholder="Password"
+                    th:disabled="${#authorization.expression('isAuthenticated()')}" required>
+            </div>
+            <div class="form-group show-password-container">
+                <input type="checkbox" id="show-password">
+                <label for="show-password">Show Password</label>
+            </div>
+            <div id="captcha-container" style="display: none;">
+                <div class="form-group">
+                    <label for="captcha">CAPTCHA</label>
+                    <input type="text" id="captcha-input" name="captcha" placeholder="Enter CAPTCHA" required>
+                </div>
+                <canvas id="captcha-canvas" width="200" height="50"></canvas>
+            </div>
+            <div th:if="${param.error}" class="error-message">
+                <p>Invalid Username or Password..</p>
+            </div>
+            <button type="submit" th:if="${#authorization.expression('!isAuthenticated()')}"
+                id="login-button">LOGIN</button>
+            <button type="button" th:if="${#authorization.expression('isAuthenticated()')}"
+                onclick="redirectToHome()">Already Logged In</button>
+        </form>
+        <br><br>
+        <div>Need an account? Reach out to the Admin.</a></div> <br>
+        <div><a href="/">Go back? </a></div>
+    </div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="icon" type="image/png" href="/images/icon.png" sizes="32x32">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="/">
+                <img src="/images/packabag.png" alt="Logo">
+            </a>
+
+        </div>
+        <div class="user-info">
+            <h1 style="color: black;"> Welcome,</h1>
+            <h2 th:text="${userdetail.fullname}" style="color: black;">User name</h2>&nbsp
+            <div class="logout" sec:authorize="isAuthenticated">
+                <a th:href="@{/logout}" style="color: black;"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="module">
+        <div class="module-header">
+            <h2>DASHBOARD</h2>
+        </div>
+        <div class="module-content side-by-side">
+            <div class="module">
+                <div class="module-content">
+                    <h2 class="module-title">Volunteer</h2>
+                    <p>Allows you to manage volunteers registered.</p>
+                    <a href="/volunteerView" class="settings-button">Manage</a>
+                </div>
+            </div>
+            <div class="module">
+                <div class="module-content">
+                    <h2 class="module-title">Register New Admin</h2>
+                    <p>This allows you to register new admin accounts.</p>
+                    <a href="/register" class="settings-button">Register</a>
+                </div>
+            </div>
+
+
+            <div class="module">
+                <div class="module-content">
+                    <h2 class="module-title">Event</h2>
+                    <p>This allows you to add events.</p>
+                    <a href="/event-register" class="settings-button">Add</a> 
+                </div>
+            </div>
+            
+             <div class="module">
+                <div class="module-content">
+                    <h2 class="module-title">Manage Events</h2>
+                    <p>This allows you to View/Edit/Delete the events</p>
+                    <a href="/editEvents" class="settings-button">View</a> 
+                </div>
+            </div>
+            
+              <div class="module">
+                <div class="module-content">
+                    <h2 class="module-title">User events registration</h2>
+                    <p>This allows you to Edit/Delete the  user that registered for events</p>
+                    <a href="/userEventView" class="settings-button">Manage</a> 
+                </div>
+            </div>
+            
+             <div class="module">
+                <div class="module-content">
+                    <h2 class="module-title">Upload Images</h2>
+                    <p>This allows you to Upload images</p>
+                    <a href="/imageUpload" class="settings-button">Manage</a> 
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="module volunteer-count-bottom-right">
+        <div class="module-header">
+            <h2>STATISTICS</h2>
+        </div>
+        <div class="module-content">
+            <h2 class="module-title">
+                Total Volunteer Count: <span th:text="${vol.size()}"></span>
+            </h2>
+        </div>
+    </div>
+</body>
+
+</html>

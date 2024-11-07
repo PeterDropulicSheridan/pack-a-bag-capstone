@@ -1,0 +1,434 @@
+@charset "UTF-8";
+
+/* Existing styles */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    min-height: 100vh;
+    padding-top: 60px; /* Add padding to account for fixed navbar */
+    background-image: url('/images/ebg2.jpg');
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-attachment: fixed; /* Keep the background fixed while scrolling */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+
+
+/* Navigation and Sidebar styles */
+.navbar {
+    background-color: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-menu li {
+    margin-left: 1.5rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #4CAF50;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: #fff;
+    display: none;
+    flex-direction: column;
+    padding-top: 1rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.sidebar.show {
+    display: flex;
+    transform: translateX(0);
+}
+
+.sidebar li {
+    width: 100%;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+    padding: 15px 20px;
+    font-weight: 600;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.sidebar a:hover {
+    color: #4CAF50;
+}
+
+.navbar-toggle {
+    display: none;
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+
+    z-index: 1;
+    border-radius: 5px;
+    list-style: none;
+    padding: 0;
+}
+
+.dropdown-content li {
+    padding: 0;
+}
+
+.dropdown-content li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 16px;
+    display: block;
+}
+
+.dropdown-content li a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 800px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding-top: 2rem;
+    }
+
+    .dropdown-content {
+        position: static;
+        display: none;
+    }
+
+    .dropdown-content.show {
+        display: block;
+    }
+}
+
+/* Add your existing eventview.css styles here */
+
+.event-view-main {
+    padding: 2rem 0;
+}
+
+.event-content {
+    border-radius: 10px;
+    padding: 2rem;
+    max-width: 1300px;
+    margin: 0 auto; /* Center the content horizontally */
+}
+
+h1{
+    color: #2D4277;
+    text-align: center;
+    font-size: 3.2rem;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    color:black;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Event Gallery Styles */
+.event-gallery {
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.event-slide {
+    position: relative;
+}
+
+.event-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.event-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+}
+
+.event-info h2 {
+    color: #4CAF50;
+    margin-bottom: 1rem;
+    font-size: 1.7rem;
+}
+
+.event-info p {
+    margin-bottom: 1.5rem;
+}
+
+.slick-prev,
+.slick-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 50%;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.slick-prev {
+    left: 20px;
+}
+
+.slick-next {
+    right: 20px;
+}
+
+/* Event Calendar Styles */
+.event-calendar {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 2rem;
+}
+
+.calendar-event {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.calendar-event:hover {
+    transform: translateY(-5px);
+}
+
+.event-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 0.5rem;
+     font-size: 1.5rem;
+}
+
+.calendar-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+}
+
+.event-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.event-details {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.event-description {
+    margin-top: 0.5rem;
+    font-style: italic;
+    max-height: 150px; /* Adjust this value as needed */
+    overflow-y: auto;
+    padding-right: 10px; /* Add some padding for the scrollbar */
+}
+
+/* Customize scrollbar for webkit browsers */
+.event-description::-webkit-scrollbar {
+    width: 6px;
+}
+
+.event-description::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    
+}
+
+.event-description::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.event-description::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+    background-color: #45a049; /* Brighter green */
+    color: white; /* Ensure text remains white and visible */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn:hover {
+    opacity: 10;
+
+}
+
+
+@media screen and (max-width: 768px) {
+    body {
+        padding-top: 50px; /* Reduce padding for mobile */
+    }
+
+    .event-content {
+        margin-left: 20px; /* Reduce margin */
+        margin-right: 20px; /* Reduce margin */
+        padding: 1rem; /* Keep padding manageable */
+    }
+
+    h1 {
+        font-size: 1.9rem; /* Decrease font size */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Decrease font size */
+    }
+
+    .event-image {
+        height: 550px; /* Adjust height for mobile */
+    }
+
+    .slick-prev,
+    .slick-next {
+        width: 30px; /* Smaller button size for mobile */
+        height: 30px;
+        font-size: 18px; /* Smaller font size for mobile */
+    }
+
+    .event-info {
+        width: 90%; /* Make event info responsive */
+        padding: 1rem; /* Reduce padding for mobile */
+    }
+
+    .calendar-grid {
+        grid-template-columns: 1fr; /* Stack items in single column */
+    }
+
+    .event-title {
+        font-size: 1.5rem; /* Decrease font size */
+    }
+
+    .event-date {
+        font-size: 1.2rem; /* Decrease font size */
+    }
+
+    .event-description {
+        max-height: 100px; /* Adjust height for mobile */
+    }
+    
+}
+
+/* Media query for very small screens */
+@media (max-width: 480px) {
+    .event-content {
+        padding: 1rem;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
